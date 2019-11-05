@@ -1,0 +1,17 @@
+{
+  "name": "instaimage-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sequelize": "^5.21.2"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^5.5.1"
+  }
+}
