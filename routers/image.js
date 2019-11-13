@@ -1,25 +1,25 @@
 //instaimage-server/routers/images.js
 
 const { Router } = require('express')
-const { Image } = require('../models')
+const { Image, User } = require('../models')
 const auth = require('../middleware/auth')
 
 const router = new Router()
-
+//attributes:{ exclude: ["email", "password"]} if you only want to exclude one or two items
 router.get('/image', (req, res, next) => {
     console.log('GET ALL IMAGES')
-    Image.findAll()
+    Image.findAll({
+        include: [
+           { model: User, attributes:["username"] }
+        ],
+      })
     .then(images => res.status(200).send(images))
     .catch(next)
 })
 
 //post an image
 router.post('/image',auth, (req, res, next) => {
-    console.log('POST AN IMAGE REQ IS', req.body, req.userId)
-    const image={...req.body,UserId: req.userId}
-    console.log('image is ', image)
-    Image.create(image
-        /*{userId: req.userId, ...req.body}*/)
+    Image.create({...req.body,UserId: req.userId})
     .then(image => res.status(200).send(image))
     .catch(next)
 })

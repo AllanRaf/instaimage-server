@@ -46,7 +46,6 @@ app.use(corsMiddleware)
       console.error(err.message);
       console.error(err.stack);
     }
-
     next();
   })
   // Log info about the request time and the status code
@@ -56,5 +55,5 @@ app.use(corsMiddleware)
     next();
   })
   .listen(port, () => {
-    console.log(`Blog API server is listening on port ${port}`);
+    console.log(`Image API server listening on ${port}`);
   });

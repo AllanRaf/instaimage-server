@@ -3,20 +3,16 @@
 const { Router } = require('express');
 const { User }= require('../models');
 const bcrypt = require('bcrypt');
-
 const router = new Router();
-console.log('using users router')
 
 router.get('/user', (req, res, next) => {
-
-  console.log('users end point')
+  
   res.send({
     message: "success"
   })
 })
 
 router.post('/user', (req, res, next) => {
-  console.log('user being created', 1000, req.body)
 
     User.findOne({where: {
         email: req.body.email
@@ -42,6 +38,5 @@ router.post('/user', (req, res, next) => {
     })
     .catch(next)
   })
-
 
 module.exports = router

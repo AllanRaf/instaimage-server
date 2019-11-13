@@ -15,9 +15,7 @@ function auth(req, res, next) {
       User
         .findByPk(data.userId)
         .then(user => {
-          console.log('USER IS', user)
           if (!user) return next('User does not exist')
-          console.log('user is:', user)
           req.user = user
           req.userId = data.userId  //added this line to try and add userId column to images
           next()

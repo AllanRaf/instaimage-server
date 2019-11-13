@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     url: DataTypes.STRING
   }, {});
   Image.associate = function(models) {
-    // associations can be defined here
     Image.belongsTo(models.User)
   };
   return Image;
