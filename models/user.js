@@ -8,9 +8,12 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     // associations can be defined here
     models.Image.belongsTo(models.User,{
-      foreignKey: "userId"
+      foreignKey:{
+        name: 'userId',
+        allowNull:false
+      }
     })
+    models.User.hasMany(models.Image)
   };
-  console.log('User is', User)
   return User;
 };

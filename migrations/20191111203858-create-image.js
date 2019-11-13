@@ -21,14 +21,25 @@ module.exports = {
             tableName: 'Users'
           },
           key: 'id'
-        }
+        },
       },
+      /*userName: {
+        type: Sequelize.STRING,
+        references: {
+          model: {
+            tableName: 'Users'
+          },
+          key: 'username'
+        },
+      },*/
+      
+      
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
