@@ -6,14 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING
   }, {});
   User.associate = function(models) {
-    // associations can be defined here
-    models.Image.belongsTo(models.User,{
-      foreignKey:{
-        name: 'userId',
-        allowNull:false
-      }
-    })
-    models.User.hasMany(models.Image)
+    User.hasMany(models.Image)
   };
   return User;
 };

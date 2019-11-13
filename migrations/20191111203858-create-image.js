@@ -14,7 +14,7 @@ module.exports = {
       url: {
         type: Sequelize.STRING
       },
-      userId: {
+      UserId: {
         type: Sequelize.INTEGER,
         references: {
           model: {
@@ -23,17 +23,6 @@ module.exports = {
           key: 'id'
         },
       },
-      /*userName: {
-        type: Sequelize.STRING,
-        references: {
-          model: {
-            tableName: 'Users'
-          },
-          key: 'username'
-        },
-      },*/
-      
-      
       createdAt: {
         allowNull: true,
         type: Sequelize.DATE

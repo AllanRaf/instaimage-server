@@ -16,7 +16,7 @@ router.get('/image', (req, res, next) => {
 //post an image
 router.post('/image',auth, (req, res, next) => {
     console.log('POST AN IMAGE REQ IS', req.body, req.userId)
-    const image={userId: req.userId, ...req.body}
+    const image={...req.body,UserId: req.userId}
     console.log('image is ', image)
     Image.create(image
         /*{userId: req.userId, ...req.body}*/)
