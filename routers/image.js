@@ -24,4 +24,22 @@ router.post('/image',auth, (req, res, next) => {
     .catch(next)
 })
 
+//delete an image
+router.delete('/image', auth, async (req, res, next) =>{
+    try{
+        console.log('DELETING AN IMAGE', req.body.imageId, req.userId)
+        const imageDelete = await Image.destroy({where:
+            {
+                id: req.body.imageId,
+                UserId: req.userId
+            }
+        })
+        console.log('deleted image is', imageDelete)
+        res.sendStatus(200).send(imageDelete)
+    }
+    catch{
+        console.error
+    }
+})
+
 module.exports = router
