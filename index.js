@@ -1,31 +1,29 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
+const userRouter = require("./routers/users");
+const authRouter = require("./routers/auth");
+const imageRouter = require("./routers/image");
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors')
-
-const userRouter = require('./routers/users');
-const authRouter = require('./routers/auth')
-const imageRouter = require('./routers/image')
-
-const app = express()
-const corsMiddleware = cors()
+const app = express();
+const corsMiddleware = cors();
 
 const port = process.env.PORT || 4000;
 
-
-app.use(corsMiddleware)
+app
+  .use(corsMiddleware)
   // Set the requestTime when the request starts
   .use((req, _res, next) => {
     req.requestTime = Date.now();
     next();
   })
-  
+
   // Parse request bodies
-    .use(bodyParser.json())
-    .use(userRouter)
-    .use(authRouter)
-    .use(imageRouter)
+  .use(bodyParser.json())
+  .use(userRouter)
+  .use(authRouter)
+  .use(imageRouter)
   // A dummy root (/) route, could be used to render some documentation
   // about the API too!
   .get("/", (req, res, next) => {
@@ -35,7 +33,7 @@ app.use(corsMiddleware)
 
     next();
   })
-  
+
   // Handle errors
   .use((err, req, res, next) => {
     res

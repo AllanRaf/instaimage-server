@@ -14,7 +14,7 @@ On your terminal run the following (excluding the $):
 3. $ npm install
 4. $ node index.js
 
-The server runs on your local host (http://localhost:4000) in the browser.  You may wish to change this
+The server runs on your local host (http://localhost:5000) in the browser.  You may wish to change this.
 
 The client side can be connected with the [client](https://github.com/AllanRaf/instaimage-client) side.
 
