@@ -5,6 +5,7 @@ const cors = require("cors");
 const userRouter = require("./routers/users");
 const authRouter = require("./routers/auth");
 const imageRouter = require("./routers/image");
+const followRouter = require("./routers/follow");
 
 const app = express();
 const corsMiddleware = cors();
@@ -24,6 +25,7 @@ app
   .use(userRouter)
   .use(authRouter)
   .use(imageRouter)
+  .use(followRouter)
   // A dummy root (/) route, could be used to render some documentation
   // about the API too!
   .get("/", (req, res, next) => {

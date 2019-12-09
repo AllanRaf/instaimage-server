@@ -1,7 +1,7 @@
 //instaimage-server/routers/users.js
 
 const { Router } = require("express");
-const { User } = require("../models");
+const { User, followRelations } = require("../models");
 const bcrypt = require("bcrypt");
 const router = new Router();
 
@@ -32,6 +32,13 @@ router.post("/user", (req, res, next) => {
       }
     })
     .catch(next);
+});
+
+//user has clicked to follow someone
+router.post("/user/:followingId", (req, res, next) => {
+  //create new entry in followrelations table to add imFollowingId and
+  //myFollowerId.  userId will be added to myFollowerId.
+  console.log("following relations");
 });
 
 module.exports = router;
