@@ -14,17 +14,31 @@ router.post("/follow/:followingId", auth, (req, res, next) => {
     "followRelations",
     followRelations
   );
-
   followRelations
-    .create({
-      FollowerId: req.userId,
-      FollowedId: req.params.followingId
+    .findOne({
+      where: {
+        FollowerId: req.userId,
+        FollowedId: req.params.followingId
+      }
     })
-    .then(followRelation => {
-      console.log("followRelation is", followRelation);
-      res.status(201).json(followRelation);
-    })
-    .catch(next);
+    .then(following => {
+      if (following) {
+        console.log("following is", following);
+        res.status(400).json("You are already following this user");
+      } else {
+        followRelations
+          .create({
+            FollowerId: req.userId,
+            FollowedId: req.params.followingId
+          })
+          .then(followRelation => {
+            console.log("followRelation is", followRelation);
+            res.status(201).json(followRelation);
+          })
+          .catch(next);
+      }
+    });
+
   /*res.send({
       message: "success"
     });*/

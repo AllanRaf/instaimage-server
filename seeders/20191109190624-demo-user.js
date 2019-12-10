@@ -7,23 +7,23 @@ module.exports = {
       "Users",
       [
         {
-          username: "dog",
-          email: "dog",
-          password: bcrypt("dog"),
+          username: "dog1",
+          email: "dog1",
+          password: bcrypt.hashSync("dog", 10),
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          username: "cat",
-          email: "cat",
-          password: bcrypt("cat"),
+          username: "cat1",
+          email: "cat1",
+          password: bcrypt.hashSync("cat", 10),
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           username: "duck",
           email: "duck",
-          password: bcrypt("duck"),
+          password: bcrypt.hashSync("duck", 10),
           createdAt: new Date(),
           updatedAt: new Date()
         }

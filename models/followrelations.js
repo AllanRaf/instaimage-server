@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     "followRelations",
     {
       FollowerId: DataTypes.INTEGER,
-      FollowingId: DataTypes.INTEGER
+      FollowedId: DataTypes.INTEGER
     },
     {}
   );
