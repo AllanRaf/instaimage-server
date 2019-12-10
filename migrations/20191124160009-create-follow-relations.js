@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      myFollowerId: {
+      FollowerId: {
         type: Sequelize.INTEGER,
         references: {
           model: {
@@ -17,7 +17,7 @@ module.exports = {
           key: "id"
         }
       },
-      imFollowingId: {
+      FollowedId: {
         type: Sequelize.INTEGER,
         references: {
           model: {
