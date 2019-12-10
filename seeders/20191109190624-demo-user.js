@@ -16,7 +16,14 @@ module.exports = {
         {
           username: "cat",
           email: "cat",
-          password: "cat",
+          password: bcrypt("cat"),
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          username: "duck",
+          email: "duck",
+          password: bcrypt("duck"),
           createdAt: new Date(),
           updatedAt: new Date()
         }
