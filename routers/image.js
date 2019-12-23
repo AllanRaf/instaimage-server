@@ -18,12 +18,16 @@ router.get("/image", (req, res, next) => {
 //post an image
 router.post("/image", auth, (req, res, next) => {
   Image.create(
-    { ...req.body, userId: req.userId },
-    { include: [{ model: User, attributes: ["username"] }] }
+    { ...req.body, userId: req.userId }
+    //{ include: [{ model: User, attributes: ["username"] }] }
   )
     .then(image => {
-      console.log("image after posting is", image);
-      res.status(200).send(image);
+      image
+        .reload({ include: [{ model: User, attributes: ["username"] }] })
+        .then(image => {
+          console.log("image after posting is", image);
+          res.status(200).send(image);
+        });
     })
     .catch(next);
 });
